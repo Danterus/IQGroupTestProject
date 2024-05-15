@@ -1,0 +1,31 @@
+﻿
+@page "/entity-form"
+@inherits EntityFormBase
+    <h3>@*Entity Form*@</h3>
+    <EditForm Model="@Entity" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <div>
+            <label for="name">Name:</label>
+            <InputText id="name" @bind-Value="Entity.Name" />
+        </div>
+        <div>
+            <label for="pass">Password:</label>
+            <InputText type="password" id="pass" @bind-Value="Entity.Password" />
+        </div>
+
+
+        <button type="submit">Submit</button>
+
+        @if (!string.IsNullOrEmpty(ErrorMessage))
+        {
+            <p class="error-message">@ErrorMessage</p>
+        }
+        @if (!string.IsNullOrEmpty(DoneMessage))
+        {
+            <p class="done-message">@DoneMessage</p>
+        }
+    </EditForm>
+@code {
+
+}
